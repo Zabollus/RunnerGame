@@ -151,8 +151,10 @@ player.add(Player())
 
 obstacle_group = pygame.sprite.Group()
 
-sky_surface = pygame.image.load('graphics/Sky.png').convert()
-ground_surface = pygame.image.load('graphics/ground.png').convert()
+sky_surface = pygame.image.load('graphics/sky_wide.png').convert()
+ground_surface = pygame.image.load('graphics/ground_wide.png').convert()
+sky_x = 0
+ground_x = 0
 
 player_stand = pygame.image.load('graphics/Player/player_stand.png').convert_alpha()
 player_stand = pygame.transform.rotozoom(player_stand, 0, 2)
@@ -211,8 +213,16 @@ while True:
                 start_time = int(pygame.time.get_ticks() / 1000)
 
     if game_active:
-        screen.blit(sky_surface, (0, 0))
-        screen.blit(ground_surface, (0, 300))
+        screen.blit(sky_surface, (sky_x, 0))
+        sky_x -= 1
+        if sky_x <= -1600:
+            sky_x = 0
+            print("zerowanie nieba")
+        screen.blit(ground_surface, (ground_x, 300))
+        ground_x -= 3
+        if ground_x <= -1600:
+            ground_x = 0
+            print("zerowanie ziemii")
         # pygame.draw.rect(screen, '#c0e8ec', score_rect)
         # pygame.draw.rect(screen, '#c0e8ec', score_rect, 10)
         # screen.blit(score_surf, score_rect)
