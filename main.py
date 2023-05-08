@@ -217,12 +217,10 @@ while True:
         sky_x -= 1
         if sky_x <= -1600:
             sky_x = 0
-            print("zerowanie nieba")
         screen.blit(ground_surface, (ground_x, 300))
         ground_x -= 3
         if ground_x <= -1600:
             ground_x = 0
-            print("zerowanie ziemii")
         # pygame.draw.rect(screen, '#c0e8ec', score_rect)
         # pygame.draw.rect(screen, '#c0e8ec', score_rect, 10)
         # screen.blit(score_surf, score_rect)
